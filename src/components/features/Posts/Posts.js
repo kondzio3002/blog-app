@@ -3,7 +3,7 @@ import { getAllPosts } from "../../../redux/postsRedux";
 import { Link } from "react-router-dom";
 import { Card, Button, Row, Col } from "react-bootstrap";
 
-const Posts = props => {
+const PostId = () => {
 
   const posts = useSelector(getAllPosts);
 
@@ -26,4 +26,4 @@ const Posts = props => {
   );
 };
 
-export default Posts;
+export default PostId;

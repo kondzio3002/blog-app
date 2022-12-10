@@ -1,8 +1,8 @@
+import PostId from "../../features/PostId/PostId";
+
 const Post = () => {
   return (
-    <>
-    <h1>Single post</h1>
-    </>
+    <PostId />
   );
 };
 
