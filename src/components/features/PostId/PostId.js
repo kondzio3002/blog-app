@@ -4,7 +4,7 @@ import { Card, Row, Col, Button } from "react-bootstrap";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
-const Posts = () => {
+const PostId = () => {
 
   const { id } = useParams();
   const posts = useSelector(state => getPostById(state, id));
@@ -25,4 +25,4 @@ const Posts = () => {
   );
 };
 
-export default Posts;
+export default PostId;
