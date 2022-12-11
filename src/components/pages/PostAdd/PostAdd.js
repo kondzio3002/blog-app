@@ -1,8 +1,12 @@
+import { Col } from "react-bootstrap";
+import PostAddForm from "../../features/PostAddForm/PostAddForm";
+
 const PostAdd = () => {
   return (
-    <>
-    <h1>PostAdd</h1>
-    </>
+    <Col xs={{ span: 8, offset: 2 }}>
+      <h1>Add post</h1>
+      <PostAddForm />
+    </Col>
   );
 };
 
