@@ -29,7 +29,7 @@ const PostId = () => {
           <Card.Title as="h3">{post.title}</Card.Title>
           <Card.Text as="p" className="my-0"><strong>Author: </strong>{post.author}</Card.Text>
           <Card.Text as="p"><strong>Published: </strong>{post.publishedDate}</Card.Text>
-          <Card.Text className="mb-4">{post.content}</Card.Text>
+          <Card.Text className="mb-4" dangerouslySetInnerHTML={{ __html: post.content}} />
         </Col>
         <Col>
           <Link to={"/post/edit/" + post.id}><Button variant="outline-info">Edit</Button></Link>{' '}
