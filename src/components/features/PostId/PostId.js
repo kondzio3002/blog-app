@@ -4,6 +4,7 @@ import { Card, Row, Col, Button, Modal } from "react-bootstrap";
 import { useParams, Navigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { dateToStr } from "../../../utils/dateToStr";
 
 const PostId = () => {
 
@@ -28,7 +29,7 @@ const PostId = () => {
         <Col xs={{ span: 6, offset: 2 }}> 
           <Card.Title as="h3">{post.title}</Card.Title>
           <Card.Text as="p" className="my-0"><strong>Author: </strong>{post.author}</Card.Text>
-          <Card.Text as="p"><strong>Published: </strong>{post.publishedDate}</Card.Text>
+          <Card.Text as="p"><strong>Published: </strong>{dateToStr(post.publishedDate)}</Card.Text>
           <Card.Text className="mb-4" dangerouslySetInnerHTML={{ __html: post.content}} />
         </Col>
         <Col>
