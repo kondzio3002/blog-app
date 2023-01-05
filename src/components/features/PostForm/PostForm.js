@@ -5,6 +5,8 @@ import 'react-quill/dist/quill.snow.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
+import { getAllCategories } from "../../../redux/categoriesRedux";
 
 const PostForm = ({ action, actionText, ...props }) => {
 
@@ -15,14 +17,19 @@ const PostForm = ({ action, actionText, ...props }) => {
   const [author, setAuthor] = useState(props.author || '');
   const [contentError, setContentError] = useState(false);
   const [dateError, setDateError] = useState(false);
+  const [category, setCategory] = useState(props.category || '');
+  const [categoryError, setCategoryError] = useState(false);
 
   const { register, handleSubmit: validate, formState: { errors } } = useForm();
+
+  const categories = useSelector(getAllCategories);
 
   const handleSubmit = () => {
     setContentError(!content);
     setDateError(!publishedDate);
-    if(content && publishedDate) {
-      action({ title, author, publishedDate, shortDescription, content });
+    setCategoryError(!category);
+    if(content && publishedDate && category) {
+      action({ title, author, publishedDate, shortDescription, content, category });
     }
   };
 
@@ -55,6 +62,19 @@ const PostForm = ({ action, actionText, ...props }) => {
           onChange={(date) => setPublishedDate(date)} 
         /> 
         {dateError && <small className="d-block form-text text-danger mt-2">This field is required</small>}       
+      </Form.Group>
+      <Form.Group className="mt-3">
+        <Form.Label>Category</Form.Label>
+        <Form.Select
+          value={category}
+          onChange={e => setCategory(e.target.value)}
+        >
+          <option>Select category...</option>
+          {categories.map(category => 
+            <option value={category.name}>{category.name}</option>
+          )}
+        </Form.Select>
+        {categoryError && <small className="d-block form-text text-danger mt-2">This field is required</small>}
       </Form.Group>
       <Form.Group className="mt-3">
         <Form.Label>Short description</Form.Label>

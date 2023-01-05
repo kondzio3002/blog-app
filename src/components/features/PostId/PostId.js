@@ -29,7 +29,8 @@ const PostId = () => {
         <Col xs={{ span: 6, offset: 2 }}> 
           <Card.Title as="h3">{post.title}</Card.Title>
           <Card.Text as="p" className="my-0"><strong>Author: </strong>{post.author}</Card.Text>
-          <Card.Text as="p"><strong>Published: </strong>{dateToStr(post.publishedDate)}</Card.Text>
+          <Card.Text as="p" className="my-0"><strong>Published: </strong>{dateToStr(post.publishedDate)}</Card.Text>
+          <Card.Text as="p"><strong>Category: </strong>{post.category}</Card.Text>
           <Card.Text className="mb-4" dangerouslySetInnerHTML={{ __html: post.content}} />
         </Col>
         <Col>
